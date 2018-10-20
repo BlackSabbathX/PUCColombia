@@ -1,5 +1,5 @@
-import Toolbar from './Toolbar';
+import SearchBar from './SearchBar';
 import Header from './Header';
 import style from './style';
 
-export {Toolbar, Header, style};
+export {SearchBar, Header, style};

@@ -1,5 +1,5 @@
 import ListItem from './ListItem';
-import CheckableIndicator from './CheckableIndicator';
+import CardItem from './CardItem';
 import style from './style';
 
-export {ListItem, style, CheckableIndicator};
+export {ListItem, CardItem, style};

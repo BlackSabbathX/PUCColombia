@@ -20,28 +20,28 @@ interface GeneralAccount {
     description: string,
 }
 
-const getChildren = (code: number) => {
-    if (code === 0) return completepuc;
-    const codeString: string = code.toString();
+const getChildren = (item: any) => {
+    if (!item) return completepuc;
+    const codeString: string = item.code.toString();
     switch (codeString.length) {
         case 1:
             return completepuc
-                .filter((item: Class) => item.code === code)[0].groups;
+                .filter((item: Class) => item.code === item.code)[0].groups;
         case 2:
             return completepuc
                 .filter((item: Class) => item.code === parseInt(codeString.substr(0, 1)))[0].groups
-                .filter((item: Group) => item.code === code)[0].accounts
+                .filter((item: Group) => item.code === item.code)[0].accounts
         case 4:
             return completepuc
                 .filter((item: Class) => item.code === parseInt(codeString.substr(0, 1)))[0].groups
                 .filter((item: Group) => item.code === parseInt(codeString.substr(0, 2)))[0].accounts
-                .filter((item: Account) => item.code === code)[0].subs
+                .filter((item: Account) => item.code === item.code)[0].subs
         default:
             return completepuc
                 .filter((item: Class) => item.code === parseInt(codeString.substr(0, 1)))[0].groups
                 .filter((item: Group) => item.code === parseInt(codeString.substr(0, 2)))[0].accounts
                 .filter((item: Account) => item.code === parseInt(codeString.substr(0, 4)))[0].subs
-                .filter((item: GeneralAccount) => item.code === code)[0].aux
+                .filter((item: GeneralAccount) => item.code === item.code)[0].aux
     }
 }
 

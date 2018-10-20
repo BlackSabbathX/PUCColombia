@@ -1,3 +1,5 @@
+import {Platform} from "react-native";
+
 interface Theme {
     $bgColor: string,
     $bgColorDark: string,
@@ -5,6 +7,8 @@ interface Theme {
     $textColor: string,
     $textAccentColor: string,
 }
+
+const iconPrefix: string = Platform.OS === 'ios' ? 'ios' : 'md';
 
 const dark: Theme = {
     $bgColor: '#333333',
@@ -23,11 +27,11 @@ const blue: Theme = {
 }
 
 const purple: Theme = {
-    $bgColor: '#670099',
-    $bgColorDark: '#5A0088',
+    $bgColor: '#60008f',
+    $bgColorDark: '#4D0074',
     $accentColor: '#FFCC00',
     $textColor: '#FFFFFF',
-    $textAccentColor: '#5A0088',
+    $textAccentColor: '#4D0074',
 }
 
-export {dark, blue, purple, Theme};
+export {dark, blue, purple, Theme, iconPrefix};

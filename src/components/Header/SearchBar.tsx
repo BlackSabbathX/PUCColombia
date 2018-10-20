@@ -1,6 +1,8 @@
 import React from 'react';
-import {Image, Text, TextInput, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
+import {Text, TextInput, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native';
 import style from './style';
+import {Ionicons} from "@expo/vector-icons";
+import {iconPrefix} from "../../config/themes";
 
 interface Props {
     onExtraButtonPress: () => void
@@ -23,10 +25,11 @@ class SearchBar extends React.Component<Props> {
                         style={style.input}/>
                 </View>
                 <TouchableOpacity onPress={this.props.onExtraButtonPress}>
-                    <Image
-                        resizeMode={'contain'}
+                    <Ionicons
                         style={style.settingsIcon}
-                        source={require('./images/settings-logo.png')}/>
+                        name={`${iconPrefix}-settings`}
+                        size={23}
+                        color={style.$selectionColor}/>
                 </TouchableOpacity>
             </View>
         );

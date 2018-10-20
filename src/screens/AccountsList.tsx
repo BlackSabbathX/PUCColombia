@@ -1,29 +1,22 @@
 import React from 'react';
-import EStyleSheet from 'react-native-extended-stylesheet';
-import {FlatList, View} from 'react-native';
 import {getChildren} from '../data/puc';
-import {ListItem} from '../components/List';
 import {Header} from '../components/Header';
+import Container from "../components/Container/Container";
+import CardItem from "../components/List/CardItem";
+import {FlatList} from "react-native";
+import ListItem from "../components/List/ListItem";
 
 interface Props {
     navigation: any,
 }
 
-const style = EStyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '$bgColor'
-    }
-});
-
 class AccountList extends React.Component<Props> {
-    navigateNext = (nextLevel: string, code: number, name: string) => {
+    navigateNext = (nextLevel: string, account: any) => {
         this.props.navigation.navigate(nextLevel, {
-            code: code,
-            name: name,
+            account: account,
             nextLevel: this.getNextLevel(nextLevel),
         });
-    }
+    };
 
     getNextLevel = (level: string): string => {
         switch (level) {
@@ -34,16 +27,23 @@ class AccountList extends React.Component<Props> {
             default:
                 return '';
         }
-    }
+    };
 
     render() {
-        const {code, nextLevel, name} = this.props.navigation.state.params;
-        const data = getChildren(code);
+        const {account, nextLevel} = this.props.navigation.state.params;
+        const data = getChildren(account);
         return (
-            <View style={style.container}>
+            <Container>
                 <Header
                     onGoBackPress={() => this.props.navigation.goBack()}
-                    headerText={code == 0 ? 'Clases' : `${code.toString()}   ${name}`}/>
+                    headerText={account ? account.code.toString() : 'Clases'}/>
+                {
+                    account ?
+                        <CardItem isFirst={true}
+                                  titleText={account.name}
+                                  bodyText={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'}/> :
+                        null
+                }
                 <FlatList
                     data={data}
                     keyExtractor={item => item.code.toString()}
@@ -51,11 +51,12 @@ class AccountList extends React.Component<Props> {
                         ({item, index}) =>
                             <ListItem
                                 text={`${item.code}   ${item.name}`}
-                                onPress={() => this.navigateNext(nextLevel, item.code, item.name)}
-                                isFirst={index === 0}/>
-                    }
-                />
-            </View>
+                                onPress={() => this.navigateNext(nextLevel, item)}
+                                iconWithOsPrefix={false}
+                                isFirst={index === 0 && !account}
+                                iconName={'ios-arrow-forward'}/>
+                    }/>
+            </Container>
         );
     }
 }

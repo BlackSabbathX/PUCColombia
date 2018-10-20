@@ -1,23 +1,21 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import {Dimensions, StatusBar} from 'react-native';
+import { Platform, StatusBar} from 'react-native';
 
-const windowWidth = Dimensions.get('screen').width;
+const statusBarHeight = StatusBar.currentHeight;
 
 export default EStyleSheet.create({
     $selectionColor: '$textColor',
     root: {
-        marginTop: StatusBar.currentHeight + 10,
-        width: windowWidth - 20,
+        marginTop: statusBarHeight ? statusBarHeight + 10 : 10,
+        marginHorizontal: 10,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center'
     },
     wrapper: {
-        width: windowWidth - 55,
         height: 40,
+        flex: 1,
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
         backgroundColor: '$bgColorDark',
         borderRadius: 5,
     },
@@ -44,26 +42,20 @@ export default EStyleSheet.create({
         fontSize: 16,
     },
     settingsIcon: {
-        height: 25,
-        width: 25,
-        tintColor: '$textColor',
         marginStart: 10,
     },
     header: {
         marginTop: StatusBar.currentHeight,
         width: '100%',
         height: 50,
-        elevation: 3,
-        backgroundColor: '$bgColor',
+        elevation: Platform.OS === 'ios' ? 0 : 3,
+        backgroundColor: '$bgColorDark',
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 15,
     },
     backArrow: {
-        width: 17,
-        height: 17,
-        tintColor: '$textColor',
-        marginEnd: 15
+        marginEnd: 15,
     },
     title: {
         fontFamily: '$defaultFont',

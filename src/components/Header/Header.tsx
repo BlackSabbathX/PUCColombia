@@ -1,6 +1,8 @@
 import React from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
+import {Ionicons} from "@expo/vector-icons";
 import style from './style';
+import {iconPrefix} from "../../config/themes";
 
 interface Props {
     onGoBackPress: () => void,
@@ -13,9 +15,15 @@ class Header extends React.Component<Props> {
         return (
             <View style={style.header}>
                 <TouchableOpacity onPress={onGoBackPress}>
-                    <Image resizeMode={'contain'} style={style.backArrow} source={require('./images/back-arrow.png')}/>
+                    <Ionicons
+                        style={style.backArrow}
+                        name={`${iconPrefix}-arrow-back`}
+                        size={20}
+                        color={style.$selectionColor}/>
                 </TouchableOpacity>
-                <Text numberOfLines={1} style={style.title}>{headerText}</Text>
+                <Text
+                    numberOfLines={1}
+                    style={style.title}>{headerText}</Text>
             </View>
         );
     }

@@ -40,6 +40,9 @@ export default createStackNavigator(
     {
         initialRouteName: 'root',
         headerMode: 'none',
+        cardStyle: {
+            backgroundColor: 'rgba(0,0,0,0.5)',
+        }
     }
 );
 

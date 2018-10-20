@@ -18,7 +18,7 @@ export default EStyleSheet.create({
         justifyContent: 'center',
     },
     logo: {
-        width: '70%',
+        width: '75%',
     },
     text: {
         marginTop: 17,

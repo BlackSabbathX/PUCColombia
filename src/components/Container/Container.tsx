@@ -1,5 +1,5 @@
 import React from "react";
-import style from './style';
+import styles from './styles';
 import {View} from "react-native";
 
 interface Props {
@@ -10,7 +10,7 @@ class Container extends React.Component<Props> {
     render() {
         const {children} = this.props;
         return (
-            <View style={style.container}>
+            <View style={styles.container}>
                 {children}
             </View>
         );

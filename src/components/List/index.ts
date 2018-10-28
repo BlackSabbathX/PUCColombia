@@ -1,5 +1,5 @@
 import ListItem from './ListItem';
 import CardItem from './CardItem';
-import style from './style';
+import styles from './styles';
 
-export {ListItem, CardItem, style};
+export {ListItem, CardItem, styles};

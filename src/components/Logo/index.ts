@@ -1,4 +1,4 @@
 import Logo from './Logo';
-import style from './style';
+import styles from './styles';
 
-export {Logo, style};
+export {Logo, styles};

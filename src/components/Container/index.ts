@@ -1,5 +1,5 @@
 import CenteredContainer from './CenteredContainer';
 import Container from './Container';
-import style from './style';
+import styles from './styles';
 
-export {CenteredContainer, Container, style};
+export {CenteredContainer, Container, styles};

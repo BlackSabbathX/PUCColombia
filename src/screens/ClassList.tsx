@@ -1,9 +1,8 @@
 import React from 'react';
 import Container from "../components/Container/Container";
-import CardItem from "../components/List/CardItem";
 import {FlatList, TouchableOpacity} from "react-native";
 import ListItem from "../components/List/ListItem";
-import {GeneralAccount} from "../data/puc";
+import {completepuc, GeneralAccount} from "../data/puc";
 import {Header, Icon} from "react-native-elements";
 import {iconPrefix} from "../config/themes";
 import styles from "./styles";
@@ -17,12 +16,13 @@ class AccountList extends React.Component<Props> {
         return false;
     }
 
-    navigateNext = (account: any) => this.props.navigation.push('Accounts', {account: account});
+    navigateNext = (account: any) => {
+        this.props.navigation.navigate('Accounts', {account: account});
+    };
 
     goBack = () => this.props.navigation.pop();
 
     render() {
-        const {account} = this.props.navigation.state.params;
         return (
             <Container>
                 <Header
@@ -36,17 +36,12 @@ class AccountList extends React.Component<Props> {
                             underlayColor={'rgba(0,0,0,.5)'}
                             component={TouchableOpacity}/>
                     }
-                    centerComponent={{text: account.code.toString(), style: styles.textStyle}}
+                    centerComponent={{text: "Clases", style: styles.textStyle}}
                     backgroundColor={styles.$bg2}
                     outerContainerStyles={styles.outerContainerStyles}
                     innerContainerStyles={styles.innerContainerStyles}/>
-                <CardItem
-                    collapsable={true}
-                    isFirst={true}
-                    titleText={account.name}
-                    bodyText={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'}/>
                 <FlatList
-                    data={account[account.subname]}
+                    data={completepuc}
                     keyExtractor={(item: GeneralAccount) => item.code.toString()}
                     renderItem={
                         ({item, index}) =>

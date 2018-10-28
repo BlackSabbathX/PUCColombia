@@ -1,14 +1,13 @@
 // @ts-ignore
 import {createStackNavigator} from 'react-navigation';
-import {AccountsList, Home, Settings} from '../screens';
+import {AccountsList, ClassList, Home, Settings, Themes} from '../screens';
+import Search from "../screens/Search";
 
 const rootNavigator = createStackNavigator(
     {
         Home: Home,
-        Classes: AccountsList,
-        Groups: AccountsList,
+        Classes: ClassList,
         Accounts: AccountsList,
-        SubAccounts: AccountsList,
     },
     {
         mode: 'modal',
@@ -21,7 +20,22 @@ const rootNavigator = createStackNavigator(
 
 const othersNavigator = createStackNavigator(
     {
-        Settings: Settings
+        Settings: Settings,
+        Themes: Themes,
+    },
+    {
+        mode: 'modal',
+        headerMode: 'none',
+        cardStyle: {
+            backgroundColor: 'rgba(0,0,0,0.5)',
+        }
+    }
+);
+
+const searchNavigator = createStackNavigator(
+    {
+        Search: Search,
+        Accounts: AccountsList,
     },
     {
         mode: 'modal',
@@ -36,6 +50,7 @@ export default createStackNavigator(
     {
         root: rootNavigator,
         Settings: othersNavigator,
+        Search: searchNavigator
     },
     {
         initialRouteName: 'root',

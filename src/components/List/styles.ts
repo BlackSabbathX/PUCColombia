@@ -2,38 +2,46 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default EStyleSheet.create({
     $underlayColor: 'rgba(0, 0, 0, .5)',
-    $iconColor: '$textColor',
+    $text: '$textColor',
     container: {
-        borderRadius: 3,
         alignItems: 'center',
         backgroundColor: '$bgColorDark',
         marginHorizontal: 7,
         marginBottom: 7,
         paddingHorizontal: 20,
+        borderRadius: 4,
+    },
+    closeButton: {
+        width: 20,
+        height: 20,
+        marginStart: 10
     },
     cardContainer: {
-        borderRadius: 3,
         marginHorizontal: 7,
         marginBottom: 7,
         backgroundColor: '$bgColorDark',
         paddingHorizontal: 20,
         paddingVertical: 15,
+        borderRadius: 4,
     },
     cardTitle: {
         fontFamily: '$defaultFont',
         fontSize: 20,
         color: '$textColor',
-        flex: 1,
     },
     cardTitleWrapper: {
         flexDirection: 'row',
         alignItems: 'center'
     },
+    cardTitleContainer: {
+        flex: 1
+    },
     cardBody: {
         marginTop: 10,
         fontFamily: '$defaultFont',
         fontSize: 16,
-        color: '$textColor'
+        color: '$textColor',
+        overflow: 'hidden'
     },
     wrapper: {
         flexDirection: 'row',

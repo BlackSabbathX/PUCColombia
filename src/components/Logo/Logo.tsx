@@ -1,21 +1,21 @@
 import React from 'react';
 import {Image, ImageBackground, Text, View} from 'react-native';
-import style from './style';
+import styles from './styles';
 
 class Logo extends React.Component {
     render() {
         return (
-            <View style={style.wrapper}>
+            <View style={styles.wrapper}>
                 <ImageBackground
                     resizeMode={'contain'}
                     source={require('./images/quad-round.png')}
-                    style={style.shape}>
+                    style={styles.shape}>
                     <Image
                         resizeMode={'contain'}
                         source={require('./images/home-logo.png')}
-                        style={[style.logo, {tintColor: style.$tintColor}]}/>
+                        style={[styles.logo, {tintColor: styles.$tintColor}]}/>
                 </ImageBackground>
-                <Text style={style.text}>PUC Colombia</Text>
+                <Text style={styles.text}>PUC Colombia</Text>
             </View>
         );
     }

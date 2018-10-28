@@ -5,6 +5,8 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "jsx": "react-native",
     "lib": [
       "es2017"

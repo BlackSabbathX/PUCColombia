@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './style';
+import styles from './styles';
 import {Animated, Text, TouchableOpacity, View} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 
@@ -7,68 +7,84 @@ interface Props {
     titleText: string,
     bodyText: string,
     isFirst?: boolean,
+    collapsable: boolean,
     children?: Element | Element[]
 }
 
 interface State {
+    expanded: boolean,
+    caretName: string,
+    animation: Animated.Value,
     minHeight?: number,
     maxHeight?: number,
-    expanded: boolean,
-    animation: Animated.Value,
 }
+
+const UP = 'up';
+const DOWN = 'down';
 
 class CardItem extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
             expanded: true,
+            caretName: 'md-arrow-dropdown',
+            // @ts-ignore
             animation: new Animated.Value(),
         };
     }
 
-    setMinHeight = (event: any) => this.setState({
-        minHeight: event.nativeEvent.layout.height,
-    });
-    setMaxHeight = (event: any) => this.setState({
-        maxHeight: event.nativeEvent.layout.height,
-    });
+    shouldComponentUpdate(nextProps: Props, nextState: State) {
+        return this.state.expanded !== nextState.expanded;
+    }
+
+    setMinHeight = (event: any) => this.setState({minHeight: event.nativeEvent.layout.height});
+
+    setMaxHeight = (event: any) => this.setState({maxHeight: event.nativeEvent.layout.height});
 
     toogle = () => {
-        let initialValue = this.state.expanded ?
-            this.state.maxHeight + this.state.minHeight :
-            this.state.minHeight;
-        let finalValue = this.state.expanded ?
-            this.state.minHeight :
-            this.state.maxHeight + this.state.minHeight;
+        const {expanded, maxHeight = 0, minHeight = 0} = this.state;
+        const initialValue = expanded ?
+            maxHeight + minHeight + 40 :
+            minHeight + 30;
+        const finalValue = expanded ?
+            minHeight + 30 :
+            maxHeight + minHeight + 40;
         this.setState({
-            expanded: !this.state.expanded
+            expanded: !expanded,
+            caretName: `md-arrow-drop${expanded ? UP : DOWN}`
         });
         this.state.animation.setValue(initialValue);
         Animated.spring(
             this.state.animation,
             {
-                toValue: finalValue + 30
+                toValue: finalValue,
             }
         ).start();
     };
 
     render() {
-        const {titleText, bodyText, isFirst} = this.props;
+        const {titleText, bodyText, isFirst, collapsable} = this.props;
         return (
-            <Animated.View style={[style.cardContainer, {marginTop: isFirst ? 9 : 0, height: this.state.animation}]}>
-                <View style={style.cardTitleWrapper}>
-                    <Text
-                        numberOfLines={1}
-                        onLayout={this.setMinHeight}
-                        style={style.cardTitle}>{titleText}</Text>
-                    <TouchableOpacity onPress={this.toogle}>
-                        <Ionicons
-                            name={this.state.expanded ? 'md-arrow-dropup' : 'md-arrow-dropdown'}
-                            size={20}
-                            color={style.$iconColor}/>
-                    </TouchableOpacity>
+            <Animated.View style={[styles.cardContainer, {marginTop: isFirst ? 9 : 0, height: this.state.animation}]}>
+                <View style={styles.cardTitleWrapper}>
+                    <View style={styles.cardTitleContainer}>
+                        <Text
+                            onLayout={this.setMinHeight}
+                            style={styles.cardTitle}>{titleText}</Text>
+                    </View>
+                    {collapsable ?
+                        <TouchableOpacity
+                            style={styles.closeButton}
+                            onPress={this.toogle}>
+                            <Ionicons
+                                name={this.state.caretName}
+                                size={20}
+                                color={styles.$text}/>
+                        </TouchableOpacity> :
+                        null
+                    }
                 </View>
-                <Text onLayout={this.setMaxHeight} style={style.cardBody}>{bodyText}</Text>
+                <Text onLayout={this.setMaxHeight} style={styles.cardBody}>{bodyText}</Text>
             </Animated.View>
         );
     }

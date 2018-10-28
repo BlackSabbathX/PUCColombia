@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <script>
         function myFunction() {
@@ -12,13 +11,28 @@
                 const text = element.children[0].innerText.trim();
                 const code = text.split(" ")[0];
                 const name = text.replace(code, "").trim();
+                let subname = '';
+                switch (code.length) {
+                    case 1:
+                        subname = 'groups';
+                        break;
+                    case 2:
+                        subname = 'accounts';
+                        break;
+                    case 4:
+                        subname = 'subs';
+                        break;
+                    case 6:
+                        subname = 'aux';
+                        break;
+                }
                 pure.push({
                     code: parseInt(code),
                     name: name,
-                    description: ''
+                    description: '',
+                    subname: subname
                 });
             }
-            ;
 
             for (let index = 0; index < array.length; index++) {
                 const element = array[index];
@@ -32,6 +46,7 @@
                             name: name,
                             description: '',
                             groups: [],
+                            subname: 'groups',
                         });
                         break;
                     case 2:
@@ -43,6 +58,7 @@
                                 name: name,
                                 description: '',
                                 accounts: [],
+                                subname: 'accounts',
                             });
                         break;
                     case 4:
@@ -55,6 +71,7 @@
                             name: name,
                             description: '',
                             subs: [],
+                            subname: 'subs',
                         });
                         break;
                     case 6:
@@ -69,6 +86,7 @@
                             name: name,
                             description: '',
                             aux: [],
+                            subname: 'aux',
                         });
                         break;
                     default:
@@ -84,21 +102,21 @@
                             code: parseInt(code),
                             name: name,
                             description: '',
+                            subname: '',
                         });
                 }
             }
-            ;
             console.log("PURE");
-            console.log(pure);
+            console.log(JSON.stringify(pure));
             console.log("complete");
-            console.log(complete);
+            console.log(JSON.stringify(complete));
             console.log("PURE_SIZE", roughSizeOfObject(pure, 0));
             console.log("COMPLETE_SIZE", roughSizeOfObject(complete, 0));
         }
 
         function roughSizeOfObject(value, level) {
             if (level == undefined) level = 0;
-            var bytes = 0;
+            let bytes = 0;
 
             if (typeof value === 'boolean') {
                 bytes = 4;

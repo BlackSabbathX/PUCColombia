@@ -14,8 +14,10 @@ export default EStyleSheet.create({
     shape: {
         width: windowWidth * 50 / 100,
         height: windowWidth * 50 / 100,
+        borderRadius: windowWidth * 9 / 100,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '$textColor',
     },
     logo: {
         width: '75%',

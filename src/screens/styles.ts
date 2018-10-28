@@ -9,7 +9,7 @@ export default EStyleSheet.create({
     $bg2: '$bgColorDark',
     textStyle: {
         color: '$textColor',
-        fontSize: 17,
+        fontSize: 18,
         fontFamily: '$defaultFont',
     },
     innerContainerStyles: {
@@ -29,6 +29,7 @@ export default EStyleSheet.create({
     inputStyle: {
         backgroundColor: '$bgColor',
         color: '$textColor',
+        fontSize: 16,
         fontFamily: '$defaultFont',
     },
 });

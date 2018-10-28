@@ -3,7 +3,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 // @ts-ignore
 import {connect} from 'react-redux';
 import {blue, dark, iconPrefix, purple, Theme, themeThis} from '../config/themes';
-import {AsyncStorage, ScrollView, TouchableOpacity} from 'react-native';
+import {AsyncStorage, ScrollView, Text, TouchableOpacity} from 'react-native';
 import {Container} from '../components/Container';
 import {ListItem} from '../components/List';
 import {Header, Icon} from "react-native-elements";
@@ -58,7 +58,9 @@ class Themes extends React.Component<Props, State> {
                             underlayColor={'rgba(0,0,0,.5)'}
                             component={TouchableOpacity}/>
                     }
-                    centerComponent={{text: 'Temas', style: styles.textStyle}}
+                    centerComponent={
+                        <Text style={styles.textStyle}>Temas</Text>
+                    }
                     backgroundColor={styles.$bg2}
                     outerContainerStyles={styles.outerContainerStyles}
                     innerContainerStyles={styles.innerContainerStyles}/>
@@ -70,11 +72,10 @@ class Themes extends React.Component<Props, State> {
                         onPress={this.setTheme}
                         iconName={
                             actualTheme === dark.$theme ?
-                                'checkmark' :
+                                `${iconPrefix}-checkmark` :
                                 null
                         }
-                        iconWithOsPrefix={true}
-                        customIconSize={25}
+                        iconSize={25}
                         customShapeColor={dark.$bgColorDark}/>
                     <ListItem
                         representativeData={blue}
@@ -82,11 +83,10 @@ class Themes extends React.Component<Props, State> {
                         onPress={this.setTheme}
                         iconName={
                             actualTheme === blue.$theme ?
-                                'checkmark' :
+                                `${iconPrefix}-checkmark` :
                                 null
                         }
-                        iconWithOsPrefix={true}
-                        customIconSize={25}
+                        iconSize={25}
                         customShapeColor={blue.$bgColorDark}/>
                     <ListItem
                         representativeData={purple}
@@ -94,11 +94,10 @@ class Themes extends React.Component<Props, State> {
                         onPress={this.setTheme}
                         iconName={
                             actualTheme === purple.$theme ?
-                                'checkmark' :
+                                `${iconPrefix}-checkmark` :
                                 null
                         }
-                        iconWithOsPrefix={true}
-                        customIconSize={25}
+                        iconSize={25}
                         customShapeColor={purple.$bgColorDark}/>
                 </ScrollView>
             </Container>

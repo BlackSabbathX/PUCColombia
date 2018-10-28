@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from "../components/Container/Container";
 import CardItem from "../components/List/CardItem";
-import {FlatList, TouchableOpacity} from "react-native";
+import {FlatList, Text, TouchableOpacity} from "react-native";
 import ListItem from "../components/List/ListItem";
 import {GeneralAccount} from "../data/puc";
 import {Header, Icon} from "react-native-elements";
@@ -36,7 +36,9 @@ class AccountList extends React.Component<Props> {
                             underlayColor={'rgba(0,0,0,.5)'}
                             component={TouchableOpacity}/>
                     }
-                    centerComponent={{text: account.code.toString(), style: styles.textStyle}}
+                    centerComponent={
+                        <Text style={styles.textStyle}>{account.code.toString()}</Text>
+                    }
                     backgroundColor={styles.$bg2}
                     outerContainerStyles={styles.outerContainerStyles}
                     innerContainerStyles={styles.innerContainerStyles}/>
@@ -51,10 +53,10 @@ class AccountList extends React.Component<Props> {
                     renderItem={
                         ({item, index}) =>
                             <ListItem
+                                iconSize={15}
                                 representativeData={item}
                                 text={`${item.code}   ${item.name}`}
                                 onPress={this.navigateNext}
-                                iconWithOsPrefix={false}
                                 isFirst={index === 0}
                                 iconName={'ios-arrow-forward'}/>
                     }/>

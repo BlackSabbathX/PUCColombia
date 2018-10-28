@@ -6,7 +6,7 @@ import styles from "./styles";
 // @ts-ignore
 import {connect} from 'react-redux';
 import {iconPrefix} from "../config/themes";
-import {TouchableOpacity, View} from "react-native";
+import {Text, TouchableOpacity, View} from "react-native";
 
 
 interface Props {
@@ -54,9 +54,11 @@ class Home extends React.Component<Props, State> {
                             component={TouchableOpacity}/>
                     }
                     leftComponent={
-                        <View style={{width: 26}}/>
+                        <View style={{width: 20}}/>
                     }
-                    centerComponent={{text: 'Bienvenido', style: styles.textStyle}}
+                    centerComponent={
+                        <Text style={styles.textStyle}>Bienvenido</Text>
+                    }
                     backgroundColor={styles.$bg2}
                     innerContainerStyles={styles.innerContainerStyles}
                     outerContainerStyles={styles.outerContainerStyles}/>

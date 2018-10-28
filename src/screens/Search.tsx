@@ -46,10 +46,10 @@ class Search extends React.Component<Props> {
                     renderItem={
                         ({item, index}) =>
                             <ListItem
+                                iconSize={15}
                                 representativeData={item}
                                 text={`${item.code}   ${item.name}`}
                                 onPress={this.navigateNext}
-                                iconWithOsPrefix={false}
                                 isFirst={index === 0}
                                 iconName={'ios-arrow-forward'}/>
                     }>

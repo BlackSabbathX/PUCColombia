@@ -3,7 +3,7 @@ import {iconPrefix} from '../config/themes';
 import {Container} from "../components/Container";
 import {Header, Icon} from "react-native-elements";
 import ListItem from "../components/List/ListItem";
-import {Linking, ScrollView, TouchableOpacity} from "react-native";
+import {Linking, ScrollView, Text, TouchableOpacity} from "react-native";
 import CardItem from "../components/List/CardItem";
 import styles from "./styles";
 
@@ -58,7 +58,9 @@ class Settings extends React.Component<Props, State> {
                             underlayColor={'rgba(0,0,0,.5)'}
                             component={TouchableOpacity}/>
                     }
-                    centerComponent={{text: 'Configuración', style: styles.textStyle}}
+                    centerComponent={
+                        <Text style={styles.textStyle}>Configuración</Text>
+                    }
                     backgroundColor={styles.$bg2}
                     outerContainerStyles={styles.outerContainerStyles}
                     innerContainerStyles={styles.innerContainerStyles}/>
@@ -67,15 +69,13 @@ class Settings extends React.Component<Props, State> {
                         isFirst={true}
                         text={'Temas'}
                         onPress={this.goToThemes}
-                        iconName={'color-palette'}
-                        iconWithOsPrefix={true}
-                        customIconSize={27}/>
+                        iconName={`${iconPrefix}-color-palette`}
+                        iconSize={27}/>
                     <ListItem
                         text={'Github'}
                         onPress={this.openGithub}
                         iconName={'logo-github'}
-                        iconWithOsPrefix={false}
-                        customIconSize={27}/>
+                        iconSize={27}/>
                     <CardItem
                         collapsable={false}
                         titleText={'Acerca de'}

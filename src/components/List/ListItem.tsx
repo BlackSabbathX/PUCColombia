@@ -2,14 +2,12 @@ import React from 'react';
 import {Text, TouchableHighlight, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import styles from './styles';
-import {iconPrefix} from "../../config/themes";
 
 interface Props {
     text: string,
     onPress: (representativeData: any) => void,
-    iconWithOsPrefix: boolean,
+    iconSize: number,
     isFirst?: boolean,
-    customIconSize?: number,
     customShapeColor?: string,
     iconName?: string | null,
     representativeData?: any,
@@ -28,7 +26,7 @@ class ListItem extends React.Component<Props> {
     };
 
     render() {
-        const {text, iconName, isFirst, iconWithOsPrefix, customIconSize, customShapeColor} = this.props;
+        const {text, iconName, isFirst, iconSize, customShapeColor} = this.props;
         return (
             <TouchableHighlight
                 onPress={this._onClick}
@@ -43,17 +41,8 @@ class ListItem extends React.Component<Props> {
                         {
                             iconName ?
                                 <Ionicons
-                                    style={styles.logo}
-                                    name={
-                                        iconWithOsPrefix ?
-                                            `${iconPrefix}-${iconName}` :
-                                            `${iconName}`
-                                    }
-                                    size={
-                                        customIconSize ?
-                                            customIconSize :
-                                            20
-                                    }
+                                    name={iconName}
+                                    size={iconSize}
                                     color={styles.$text}/> :
                                 null
                         }

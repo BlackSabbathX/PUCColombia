@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "puc",
-    "description": "This project is really great.",
-    "slug": "puc",
+    "name": "PUC Colombia",
+    "description": "Plan único de cuentas Colombia.",
+    "slug": "puc-colombia",
     "privacy": "public",
     "sdkVersion": "30.0.0",
     "platforms": [
@@ -27,6 +27,7 @@
     },
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "githubUrl": "https://github.com/BlackSabbathX/PucColombia"
   }
 }

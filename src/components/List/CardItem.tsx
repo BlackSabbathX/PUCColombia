@@ -6,8 +6,8 @@ import {Ionicons} from "@expo/vector-icons";
 interface Props {
     titleText: string,
     bodyText: string,
+    collapsible: boolean,
     isFirst?: boolean,
-    collapsable: boolean,
     children?: Element | Element[]
 }
 
@@ -63,7 +63,7 @@ class CardItem extends React.Component<Props, State> {
     };
 
     render() {
-        const {titleText, bodyText, isFirst, collapsable} = this.props;
+        const {titleText, bodyText, isFirst, collapsible} = this.props;
         return (
             <Animated.View style={[styles.cardContainer, {marginTop: isFirst ? 9 : 0, height: this.state.animation}]}>
                 <View style={styles.cardTitleWrapper}>
@@ -72,7 +72,7 @@ class CardItem extends React.Component<Props, State> {
                             onLayout={this.setMinHeight}
                             style={styles.cardTitle}>{titleText}</Text>
                     </View>
-                    {collapsable ?
+                    {collapsible ?
                         <TouchableOpacity
                             style={styles.closeButton}
                             onPress={this.toogle}>

@@ -11,13 +11,11 @@ interface Props {
     customShapeColor?: string,
     iconName?: string | null,
     representativeData?: any,
-    shouldReRender?: boolean
 }
 
 class ListItem extends React.Component<Props> {
-    shouldComponentUpdate() {
-        const {shouldReRender = false} = this.props;
-        return shouldReRender;
+    shouldComponentUpdate(nextProps: Props) {
+        return nextProps.isFirst !== this.props.isFirst;
     }
 
     _onClick = () => {

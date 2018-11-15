@@ -3,8 +3,6 @@ import {CenteredContainer} from '../components/Container';
 import {Logo} from '../components/Logo';
 import {Header, Icon} from 'react-native-elements';
 import styles from "./styles";
-// @ts-ignore
-import {connect} from 'react-redux';
 import {iconPrefix} from "../config/themes";
 import {Text, TouchableOpacity, View} from "react-native";
 

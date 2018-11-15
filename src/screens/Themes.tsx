@@ -1,7 +1,5 @@
 import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
-// @ts-ignore
-import {connect} from 'react-redux';
 import {blue, dark, iconPrefix, purple, Theme, themeThis} from '../config/themes';
 import {AsyncStorage, ScrollView, Text, TouchableOpacity} from 'react-native';
 import {Container} from '../components/Container';
